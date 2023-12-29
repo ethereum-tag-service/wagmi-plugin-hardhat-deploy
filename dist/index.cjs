@@ -55,7 +55,7 @@ var shouldInclude = (name, config) => {
   }
 };
 var shouldIncludeFile = (fileName, config) => {
-  const networkName = fileName.split(".")[0];
+  const networkName = import_path.default.basename(fileName, ".json");
   if (config.include_networks && config.include_networks.length > 0) {
     if (!config.include_networks.includes(networkName)) {
       return false;
