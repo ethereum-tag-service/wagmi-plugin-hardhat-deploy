@@ -21,17 +21,14 @@ var shouldInclude = (name, config) => {
   }
 };
 var shouldIncludeFile = (fileName, config) => {
+  const networkName = fileName.split(".")[0];
   if (config.include_networks && config.include_networks.length > 0) {
-    if (!config.include_networks.some(
-      (network) => fileName.includes(network)
-    )) {
+    if (!config.include_networks.includes(networkName)) {
       return false;
     }
   }
   if (config.exclude_networks && config.exclude_networks.length > 0) {
-    if (config.exclude_networks.some(
-      (network) => fileName.includes(network)
-    )) {
+    if (config.exclude_networks.includes(networkName)) {
       return false;
     }
   }
